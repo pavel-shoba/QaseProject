@@ -30,6 +30,7 @@ public class BaseTest {
     public static String LOGIN_URL = PropertyReader.getProperty("loginUrl");
     public static String PROJECT_NAME = "TEST";
     public static String PROJECT_DESCRIPTION = "Project for testing";
+    public static String NAME_SUITE = "Suite for testing";
 
     public void initPages() {
         loginSteps = new LoginSteps();

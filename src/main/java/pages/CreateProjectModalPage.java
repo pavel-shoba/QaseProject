@@ -4,6 +4,7 @@ import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.SelenideElement;
 import elements.Button;
 import elements.Input;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 
 import static com.codeborne.selenide.Selenide.$x;
 
@@ -21,7 +22,7 @@ public class CreateProjectModalPage extends ProjectsListPage {
         new Input("project-name").writeToFillProjectForm(name);
         new Input("description-area").write(description);
         new Button().click(CREATE_NEW_PROJECT_BUTTON);
-        CREATE_NEW_SUITE.shouldBe(Condition.visible);
+        wait.until(ExpectedConditions.visibilityOf(CREATE_NEW_SUITE));
         return new ProjectPage();
     }
 }

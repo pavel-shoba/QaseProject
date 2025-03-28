@@ -1,7 +1,6 @@
 package pages;
 
 import com.codeborne.selenide.Condition;
-import com.codeborne.selenide.ElementsCollection;
 import com.codeborne.selenide.SelenideElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 
@@ -21,5 +20,10 @@ public class ProjectPage extends BasePage {
         PROJECTS_BUTTON_IN_HEADER.click();
         wait.until(ExpectedConditions.visibilityOf(CREATE_NEW_PROJECT));
         return new ProjectsListPage();
+    }
+
+    public CreateSuiteModalPage openModalPageToCreateSuite() {
+        CREATE_NEW_SUITE.click();
+        return new CreateSuiteModalPage();
     }
 }
