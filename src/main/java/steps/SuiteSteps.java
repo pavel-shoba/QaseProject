@@ -3,20 +3,27 @@ package steps;
 import io.qameta.allure.Step;
 import pages.*;
 
-public class SuiteSteps {
+public class SuiteSteps extends BaseSteps {
     CreateSuiteModalPage createSuiteModalPage;
     ProjectPage projectPage;
-    CreateProjectModalPage createProjectModalPage;
 
     public SuiteSteps() {
         this.createSuiteModalPage = new CreateSuiteModalPage();
         this.projectPage = new ProjectPage();
-        this.createProjectModalPage = new CreateProjectModalPage();
     }
 
-    @Step("Create test suite")
+    @Step
     public void createSuite(String name) {
         projectPage.openModalPageToCreateSuite();
         createSuiteModalPage.fillSuiteForm(name);
+        projectPage.createdSuiteIsVisible();
+    }
+
+    @Step
+    public void deleteSuite(String name) {
+        projectPage.openModalPageToCreateSuite();
+        createSuiteModalPage.fillSuiteForm(name);
+        projectPage.createdSuiteIsVisible();
+        projectPage.deleteCreatedSuite();
     }
 }

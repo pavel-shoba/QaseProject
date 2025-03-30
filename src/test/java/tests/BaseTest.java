@@ -10,6 +10,7 @@ import pages.*;
 import steps.LoginSteps;
 import steps.ProjectsSteps;
 import steps.SuiteSteps;
+import steps.TestCaseSteps;
 import utils.PropertyReader;
 import java.util.HashMap;
 import java.util.Map;
@@ -20,27 +21,36 @@ public class BaseTest {
     protected LoginSteps loginSteps;
     protected ProjectsSteps projectsSteps;
     protected SuiteSteps suiteSteps;
+    protected TestCaseSteps testCaseSteps;
     protected CreateProjectModalPage createProjectModalPage;
     protected CreateSuiteModalPage createSuiteModalPage;
-    protected NewTestPage newTestPage;
+    protected NewTestCasePage newTestPage;
     protected ProjectPage projectPage;
     protected ProjectsListPage projectsListPage;
+    protected CasePage casePage;
     public static String USER = PropertyReader.getProperty("user");
     public static String PASSWORD = PropertyReader.getProperty("password");
     public static String LOGIN_URL = PropertyReader.getProperty("loginUrl");
+    public static String PROJECT_URL = PropertyReader.getProperty("projectUrl");
     public static String PROJECT_NAME = "TEST";
     public static String PROJECT_DESCRIPTION = "Project for testing";
     public static String NAME_SUITE = "Suite for testing";
+    public static String NAME_CASE = "Case for testing";
+    public static String DESCRIPTION_CASE = "Description of case";
+    public static String PRECONDITION_CASE = "Precondition for case";
+    public static String POSTCONDITION_CASE = "Postcondition for case";
 
     public void initPages() {
         loginSteps = new LoginSteps();
         projectsSteps = new ProjectsSteps();
         suiteSteps = new SuiteSteps();
+        testCaseSteps = new TestCaseSteps();
         createProjectModalPage = new CreateProjectModalPage();
         createSuiteModalPage = new CreateSuiteModalPage();
-        newTestPage = new NewTestPage();
+        newTestPage = new NewTestCasePage();
         projectPage = new ProjectPage();
         projectsListPage = new ProjectsListPage();
+        casePage = new CasePage();
     }
 
     @BeforeMethod
@@ -61,6 +71,7 @@ public class BaseTest {
 
     @AfterMethod
     public void endTest() {
+        projectsListPage.openProjectListPage(PROJECT_URL);
         projectsSteps.deleteCreatedProjectAfterTest();
         getWebDriver().quit();
     }
