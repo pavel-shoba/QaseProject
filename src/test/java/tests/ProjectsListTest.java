@@ -16,7 +16,7 @@ public class ProjectsListTest extends BaseTest {
     public void validateDataOfCreatedProjectTest() {
         loginSteps.login(USER, PASSWORD, LOGIN_URL);
         projectsSteps.createNewProject(PROJECT_NAME, PROJECT_DESCRIPTION);
-        projectPage.openProjectsFromHeader();
+        projectsSteps.goToProjectListByHeader();
         Assert.assertEquals(projectsListPage.getProjectName(), "TEST");
         Assert.assertEquals(projectsListPage.getTeamMember(), "Pavel Shoba");
     }

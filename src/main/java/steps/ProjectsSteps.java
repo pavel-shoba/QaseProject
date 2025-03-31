@@ -29,4 +29,14 @@ public class ProjectsSteps extends BaseSteps {
             projectsListPage.deleteCreatedProject();
         }
     }
+
+    @Step
+    public void openCreatedCase() {
+        projectPage.openCaseCard();
+    }
+
+    @Step
+    public void goToProjectListByHeader() {
+        projectPage.openProjectsFromHeader();
+    }
 }

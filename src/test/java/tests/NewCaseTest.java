@@ -21,7 +21,7 @@ public class NewCaseTest extends BaseTest {
         projectsSteps.createNewProject(PROJECT_NAME, PROJECT_DESCRIPTION);
         suiteSteps.createSuite(NAME_SUITE);
         testCaseSteps.createTestCase(NAME_CASE, DESCRIPTION_CASE, PRECONDITION_CASE, POSTCONDITION_CASE);
-        projectPage.openCaseCard();
+        projectsSteps.openCreatedCase();
         softly.assertThat(casePage.getTitleFromCard()).isEqualTo(NAME_CASE);
         softly.assertThat(casePage.getDescriptionFromCard()).isEqualTo(DESCRIPTION_CASE);
         softly.assertThat(casePage.getPostconditionFromCard()).isEqualTo(POSTCONDITION_CASE);
